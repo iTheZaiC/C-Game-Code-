@@ -3,33 +3,30 @@
 #include <ctime>
 
 int main() {
-    srand(time(0));  // Use time to generate random numbers
+    srand(time(0)); // Rastgele sayı üretimi için tohum ayarlanıyor
 
-    int randomNum = rand() % 100;  // Generate a number between 0 and 99
+    int rastgeleSayi = rand() % 100; // 0 ile 99 arasında rastgele bir sayı üretiliyor
+    int tahmin;
+    int denemeSayisi = 0;
+    
+    std::cout << "0 ile 99 arasında bir sayıyı tahmin edin." << std::endl;
 
-    int guess;
-    int guessCount = 0;
-    bool correctGuess = false;
+    do {
+        std::cout << "Tahmininizi girin: ";
+        std::cin >> tahmin;
+        
+        denemeSayisi++;
 
-    std::cout << "Guess a number between 0 and 99!" << std::endl;
-
-    while (!correctGuess) {
-        std::cout << "Enter your guess: ";
-        std::cin >> guess;
-
-        guessCount++;
-
-        if (guess == randomNum) {
-            std::cout << "Congratulations! You guessed the number in " << guessCount << " attempts." << std::endl;
-            correctGuess = true;
-        } else if (guess < randomNum) {
-            std::cout << "Enter a higher number." << std::endl;
+        if (tahmin < rastgeleSayi) {
+            std::cout << "Daha yüksek bir sayı girin." << std::endl;
+        } else if (tahmin > rastgeleSayi) {
+            std::cout << "Daha düşük bir sayı girin." << std::endl;
         } else {
-            std::cout << "Enter a lower number." << std::endl;
+            std::cout << "Tebrikler! Doğru sayıyı " << denemeSayisi << " denemede buldunuz." << std::endl;
         }
-    }
+    } while (tahmin != rastgeleSayi);
 
     return 0;
 }
-
-// The Code You See Is Written By ZaiC
+ 
+// Creator By ZaiC
